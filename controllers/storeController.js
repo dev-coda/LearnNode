@@ -29,6 +29,13 @@ exports.resize = async (req, res, next) => {
     next();
   }
 };
+exports.getStoreBySlug = async (req, res, next) => {
+  const store = await Store.findOne({ slug: req.params.slug });
+  if (!store) {
+    next();
+  }
+  res.render("store", { title: store.name, store: store });
+};
 exports.homePage = (req, res) => {
   res.render("index");
 };
