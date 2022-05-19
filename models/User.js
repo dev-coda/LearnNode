@@ -18,7 +18,7 @@ const userSchema = new Schema({
   name: { type: "string", required: "Please enter a valid name", trim: true },
 });
 
-userSchema.plugin(passportLocalMongoose, { usernameField: "username" });
+userSchema.plugin(passportLocalMongoose, { usernameField: "email" });
 userSchema.plugin(mongodbErrorHandler);
 
 module.exports = mongoose.model("User", userSchema);
